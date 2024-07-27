@@ -5,10 +5,12 @@ import loc from '../../support/locators';
 import num from '../../support/commands'
 describe('Rotina de Usuario', () => {
     describe('Logando com Usuario Padrão', () => {
+        before(()=>{
+            cy.cadastrandoUsuario()
+        })
         beforeEach(() => {
       
             cy.visit('/home')
-            cy.cadastrandoUsuario()
 
         })
         // Eu criei outro Caso de teste, porque, se juntar varios casos em apenas um IT, não saberemos qual quebrou em uma pipeline ou rodagem diaria, dividir em varios its, facilita descobrir onde o teste quebrou

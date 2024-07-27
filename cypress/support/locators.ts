@@ -5,6 +5,7 @@ const locators = {
     inputSenha: '[data-testid="senha"]',
     buttonCadastrar: '[data-testid="cadastrar"]',
     buttonEntrar: '[data-testid="entrar"]',
+    divAlerta: '.alert',
     telaCadastraSe: {
         telaInicialCadastro: '.font-robot',
         inputNome: '[data-testid="nome"]',
