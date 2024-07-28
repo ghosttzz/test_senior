@@ -31,7 +31,7 @@ describe('Endpoints de Produtos ', () => {
         })
 
         it('Criando um Produto com o Metodo POST', function () {
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 body.post.nome = body.post.nome + numProdutoDiferencial
                 cy.get('@token', { log: false }).then((refToken) => {
 
@@ -54,7 +54,7 @@ describe('Endpoints de Produtos ', () => {
         })
 
         it('Validando se o Produto foi Criado', function () {
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 body.post.nome = body.post.nome + numProdutoDiferencial
                 cy.request({
                     method: 'GET',
@@ -88,7 +88,7 @@ describe('Endpoints de Produtos ', () => {
             cy.getToken('token').then(($token) => {
                 cy.wrap($token).as('token')
             })
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 body.post.nome = body.post.nome + numProdutoDiferencial
                 cy.get('@token', { log: false }).then((refToken) => {
 
@@ -110,7 +110,7 @@ describe('Endpoints de Produtos ', () => {
             cy.cadastrandoUsuario(true)
         })
         it('Token Ausente', function () {
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 body.post.nome = body.post.nome + numProdutoDiferencial
                 cy.get('@token', { log: false }).then((refToken) => {
                     refToken = null
@@ -131,7 +131,7 @@ describe('Endpoints de Produtos ', () => {
             })
         })
         it('Produto com Nome ja existente', function () {
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 let produtoExistente = cd.getNumerosAleatorios()
                 body.post.nome = body.post.nome + produtoExistente
                 cy.get('@token', { log: false }).then((refToken) => {
