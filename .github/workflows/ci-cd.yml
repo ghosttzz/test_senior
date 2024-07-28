@@ -22,7 +22,10 @@ jobs:
 
       - name: Instalando as Dependências para os testes
         run: npm install
-
+        
+      - name: Set permissions
+        run: sudo chmod -R 755 /home/runner/.cache/Cypress
+        
       - name: Rodando os testes automatizados de API
         run: npx cypress run --browser chrome --spec .\cypress\integration\API\
         env:
