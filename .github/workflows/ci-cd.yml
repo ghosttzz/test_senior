@@ -19,24 +19,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-
-      - name: Liberando Permissao
-        run: chmod -R 755 cypress
+          
+      - name: Dando permissão ao binário do Cypress
+        run: chmod +x ./node_modules/.bin/cypress
         
       - name: Instalando as Dependências para os testes
         run: npm install
         
+      - name: Instalando o binário do Cypress
+        run: npx cypress install
+        
       - name: Rodando os testes automatizados de API
-        run: npx cypress run --browser chrome --spec .\cypress\integration\API\
-        env:
-          CI: true
-
-      - name: Rodando os testes automatizados de e2e
-        run: npx cypress run --browser chrome --spec .\cypress\integration\e2e\
-        env:
-          CI: true
-
-      - name: Rodando os testes automatizados de Bugs
-        run: npx cypress run --browser chrome --spec .\cypress\integration\Bugs\
-        env:
-          CI: true
+        run: npx cypress run
