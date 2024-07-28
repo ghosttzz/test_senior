@@ -2,7 +2,7 @@
 Este projeto é referente a alguns cenários de possíveis automações e diferentes formas de faze-las. Foi construido com uma ideia utilizando a aplicação https://front.serverest.dev.
 Foram colocados vários comentários nos testes, eles irão auxiliar no entedimento do projeto.
 
-Os cenários de teste em que esses testes foram automatizados, estão no arquivo `analiseTestes.pdf`
+Os cenários de teste em que esses testes foram automatizados, estão no arquivo `Analise da Aplicação.pdf`
 
 ### Tecnologias Utilizadas
 - Node.js (Versão 12 ou superior)
@@ -27,6 +27,9 @@ Os cenários de teste em que esses testes foram automatizados, estão no arquivo
     │    │  │   │       └── exemplo.spec.ts
     │    │  ├──── e2e/
     │    │  │   │ └── exemplo.spec.ts
+    │  ├── reports/
+    │  │    └── /.jsons
+    │  │    └── /junit
     │  ├── support/
     │  │   ├── commands.ts
     │  │   └── index.ts
@@ -39,12 +42,14 @@ Os cenários de teste em que esses testes foram automatizados, estão no arquivo
 - fixtures/: Contém arquivos de dados dos testes, dos mais variados. E nela está em diferentes pastas para deixar mais organizado
 - integration/: Contem os arquivos de testes, e segue o mesmo padrão que o fixture, assim facilitando a manutenção
 - support/: Contém comandos customizados e configurações e algumas formas de escrever o código diferente, como o próprio locators.
+- reports/: A pasta reports contém os relatórios dos testes automatizados em forma de HTML, ajudando no entendimento mais fácil do que passou e não passou.
 - tsconfig.json: Arquivo de configuração do TypeScript
 - cypress.json: Arquivo de configuração do Cypress e com todas as informações necessárias
 - package.json: Arquivo do próprio projeto
 
 - Essa estruturação torna mais fácil a manutenção, e juntamente com a escrita utilizando mais Describes como forma de limitar os cenários, torna mais entendivel no CI/CD o que quebrou e o que pode melhorar. 
 - Trazendo também o caso do locators, com ele conseguimos limitar os elementos html, e com isso caso algum ID mude, não precisamos ir em cada teste, e sim apenas mudar no arquivo principal.
+- E os relatórios, escolhi Mochawesome porque é o qual eu acredito ser mais fácil de configurar e entender, além de ser compatível com o Test Plans do AzureDevops 
 
 ## Instalação 
 
@@ -67,3 +72,7 @@ Porém, existem momentos que você não deseja rodar tudo de uma vez, e sim apen
 
 Para o caso de rodar uma pasta, seria:
 `npx cypress run --browser chrome .\cypress\integration\API\`
+
+## Pipeline
+
+Também nesse projeto criei um CI/CD com o githubActions, para demonstrar como o cypress roda e como o metódo que eu construí facilita no entedimento das pipelines e nas suas manutenções
