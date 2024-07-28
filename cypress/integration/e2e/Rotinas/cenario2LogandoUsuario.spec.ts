@@ -1,8 +1,8 @@
 
 /// <reference  types = "cypress" />
 
-import loc from '../../support/locators';
-import num from '../../support/commands'
+import loc from '../../../support/locators';
+import num from '../../../support/commands'
 describe('Rotina de Usuario', () => {
     describe('Logando com Usuario Padrão', () => {
         before(()=>{
@@ -15,7 +15,7 @@ describe('Rotina de Usuario', () => {
         })
         // Eu criei outro Caso de teste, porque, se juntar varios casos em apenas um IT, não saberemos qual quebrou em uma pipeline ou rodagem diaria, dividir em varios its, facilita descobrir onde o teste quebrou
         it('Acessando o Usuario Cadastrado', () => {
-            cy.fixture("e2e/logandoUsuarioData.json").then((infoUsuario) => {
+            cy.fixture("e2e/Rotinas/logandoUsuarioData.json").then((infoUsuario) => {
 
                 //Validando os campos de usuario padrão
                 cy.get(loc.inputEmail).should('be.visible').and('exist')

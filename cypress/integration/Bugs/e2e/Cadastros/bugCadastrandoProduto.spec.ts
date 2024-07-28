@@ -1,15 +1,13 @@
 
 /// <reference  types = "cypress" />
 
-import loc from '../../../support/locators';
-import num from '../../../support/commands'
+import loc from '../../../../support/locators';
 describe('Rotina de Produtos', () => {
     describe('Validando Mensagens', () => {
         before(() => {
             cy.cadastrandoUsuario(true)
         })
         beforeEach(() => {
-
             cy.visit('/home')
             cy.logandoUsuario()
         })
@@ -18,56 +16,55 @@ describe('Rotina de Produtos', () => {
             cy.fixture("e2e/Bugs/bugCadastrandoProdutoData.json").then((msgErros) => {
                 cy.url().should('include', '/admin/home');
 
-                cy.get('[data-testid="cadastrarProdutos"]').click()
-
-                cy.get('h1').should('contain', 'Cadastro de Produtos')
+                cy.get(loc.telaProduto.buttonTelaCadastrandoProdutos).click()
+                cy.get(loc.h1TituloPagina).should('contain', 'Cadastro de Produtos')
                 cy.url().should('include', '/admin/cadastrarprodutos');
 
 
-                //Normalmente eles pedem para baixar um plugin de upload, mas eu criei/achei essa forma a um tempo atrás
-
                 cy.intercept('POST', '**/produtos**').as('postCadastrandoProdutos');
-                cy.get('[data-testid="cadastarProdutos"]').click()
+                cy.get(loc.telaProduto.buttonCadastrarProdutos).click()
                 cy.wait('@postCadastrandoProdutos').its('response.statusCode').should('eq', 400)
 
-                cy.get('.jumbotron > form > :nth-child(1)').should('contain', msgErros.msgNome)
+                cy.get(loc.telaProduto.msgErroNome).should('contain', msgErros.msgNome)
                 //Aqui coloquei, mesmo processo, como não ta funcionando a funcionalidade o teste vai quebrar, mas aqui um exemplo
-                //cy.get('form > :nth-child(2)').should('contain', msgErros.msgPreco)
+                //cy.get(loc.telaProduto.msgErroPreco).should('contain', msgErros.msgPreco)
 
                 //Aqui coloquei, mesmo processo, como não ta funcionando a funcionalidade o teste vai quebrar, mas aqui um exemplo
-                //cy.get('form > :nth-child(3)').should('contain', msgErros.msgDescricao)
-                cy.get('form > :nth-child(4)').should('contain', msgErros.msgQuantidade)
+                //cy.get(loc.telaProduto.msgErroDescricao).should('contain', msgErros.msgDescricao)
+                cy.get(loc.telaProduto.msgErroQuantidade).should('contain', msgErros.msgQuantidade)
 
             })
         })
     })
     describe('Campos Obrigatorios', () => {
+        before(() => {
+            cy.cadastrandoUsuario(true)
+        })
+        beforeEach(() => {
+            cy.visit('/home')
+            cy.logandoUsuario()
+        })
         it('Validando Campo Obrigatorio - Imagem', () => {
-            cy.fixture("e2e/cadastrandoProdutoData.json").then((infoProduto) => {
+            cy.fixture("e2e/Cadastros/cadastrandoProdutoData.json").then((infoProduto) => {
                 cy.url().should('include', '/admin/home');
-
-                cy.get('[data-testid="cadastrarProdutos"]').click()
-
-                cy.get('h1').should('contain', 'Cadastro de Produtos')
+                cy.get(loc.telaProduto.buttonTelaCadastrandoProdutos).click()
+                cy.get(loc.h1TituloPagina).should('contain', 'Cadastro de Produtos')
                 cy.url().should('include', '/admin/cadastrarprodutos');
 
 
-                cy.get('[data-testid="nome"]').type(infoProduto.nome)
-
-                cy.get('[data-testid="preco"]').type(infoProduto.preco)
-
-                cy.get('[data-testid="descricao"]').type(infoProduto.descricao)
-
-                cy.get('[data-testid="quantity"]').type(infoProduto.quantidade)
+                cy.get(loc.telaProduto.inputNome).type(infoProduto.nome)
+                cy.get(loc.telaProduto.inputPreco).type(infoProduto.preco)
+                cy.get(loc.telaProduto.inputDescricao).type(infoProduto.descricao)
+                cy.get(loc.telaProduto.inputQuantidade).type(infoProduto.quantidade)
 
                 //Estou deixando sem a imagem, e deveria retornar o erro. Mas não está, então comentei essa parte de cadastrar para não ficar cadastrando cadastro atoa. Quando for resolvido é só descomentar 
 
                 // cy.intercept('POST', '**/produtos**').as('postCadastrandoProdutos');
-                // cy.get('[data-testid="cadastarProdutos"]').click()
+                // cy.get(loc.telaProduto.buttonCadastrarProdutos).click()
                 // cy.wait('@postCadastrandoProdutos').its('response.statusCode').should('eq', 400)
 
                 // cy.url().should('include', '/admin/listarprodutos');
-                // cy.get('h1').should('contain', 'Lista dos Produtos')
+                // cy.get(loc.h1TituloPagina).should('contain', 'Lista dos Produtos')
 
 
 

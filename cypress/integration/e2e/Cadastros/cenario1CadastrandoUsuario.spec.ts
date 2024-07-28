@@ -1,8 +1,8 @@
 
 /// <reference  types = "cypress" />
 
-import loc from '../../support/locators';
-import num from '../../support/commands'
+import loc from '../../../support/locators';
+import num from '../../../support/commands'
 describe('Rotina de Usuario', () => {
   let numUsuario = num.getNumerosAleatorios()
   describe('Cadastrando o Usuario Padrão', () => {
@@ -12,7 +12,7 @@ describe('Rotina de Usuario', () => {
       cy.get(loc.telaInicialLogin).should('be.visible')
     })
     it('Cadastrando o Usuario via Tela de Cadastra-se', () => {
-      cy.fixture("e2e/cadastrandoUsuarioData.json").then((infoUsuario) => {
+      cy.fixture("e2e/Cadastros/cadastrandoUsuarioData.json").then((infoUsuario) => {
 
         //Validando os campos de usuario padrão
         cy.get(loc.inputEmail).should('be.visible').and('exist')
@@ -56,7 +56,7 @@ describe('Rotina de Usuario', () => {
     })
     // Eu criei outro Caso de teste, porque, se juntar varios casos em apenas um IT, não saberemos qual quebrou em uma pipeline ou rodagem diaria, dividir em varios its, facilita descobrir onde o teste quebrou
     it('Acessando o Usuario Cadastrado', () => {
-      cy.fixture("e2e/cadastrandoUsuarioData.json").then((infoUsuario) => {
+      cy.fixture("e2e/Cadastros/cadastrandoUsuarioData.json").then((infoUsuario) => {
 
         //Validando os campos de usuario padrão
         cy.get(loc.inputEmail).should('be.visible').and('exist')
