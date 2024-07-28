@@ -6,7 +6,7 @@ import num from '../../support/commands'
 describe('Rotina de Usuario', () => {
     describe('Logando com Usuario Padrão', () => {
         before(()=>{
-            cy.cadastrandoUsuario()
+            cy.cadastrandoUsuario(false)
         })
         beforeEach(() => {
       

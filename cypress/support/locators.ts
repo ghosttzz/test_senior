@@ -12,7 +12,6 @@ const locators = {
         inputPassword: '[data-testid="password"]',
         checkboxCadastroADM: '[data-testid="checkbox"]',
         divAlerta: '.alert',
-
     },
 
     buttonLogout: '[data-testid="logout"]'

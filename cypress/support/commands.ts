@@ -5,20 +5,21 @@ declare global {
     namespace Cypress {
         interface Chainable {
             logandoUsuario(): Chainable<Window>;
-            cadastrandoUsuario(): Chainable<Window>;
+            cadastrandoUsuario(admin?: boolean): Chainable<Window>;
 
         }
     }
 }
-let numUsuario = getNumerosAleatorios()
+let numUsuario = null
 //Estou criando uma função para cadastrar um usuario via endpoint para ganhar mais tempo e tornar o teste totalmente independente e também logando com o mesmo
-Cypress.Commands.add('cadastrandoUsuario', () => {
+Cypress.Commands.add('cadastrandoUsuario', (admin) => {
+     numUsuario = getNumerosAleatorios()
     //Aqui estou c
     let bodyEndPoint = {
         "nome": `${numUsuario}UsuarioAutomatico`,
         "email": `${numUsuario}testUsuarioAutomatico@gmail.com`,
         "password": "teste",
-        "administrador": "false"
+        "administrador": `${admin}`
     }
     cy.request({
         method: 'POST',
@@ -29,7 +30,7 @@ Cypress.Commands.add('cadastrandoUsuario', () => {
         // expect(resp.status).eq(201);
         expect(resp.body.message).eq('Cadastro realizado com sucesso')
     })
-
+    
 })
 //Aqui estamos logando o Usuario Criado
 Cypress.Commands.add('logandoUsuario', () => {
