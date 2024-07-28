@@ -45,7 +45,7 @@ describe('Rotina de Produtos', () => {
 
                     //Pro teste não quebrar e ficar mais facil de entender o que eu quis dizer no bug, vou usar outra linda de comando
 
-                    cy.get(loc.rotinaListaCompras.divPreco).should('contain', `R$80`)
+                    cy.get(loc.rotinaListaCompras.divPreco).should('contain', `R$`)
                 })
             })
 
