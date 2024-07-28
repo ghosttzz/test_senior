@@ -19,6 +19,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+          
+      - name: Dando permissão ao binário do Cypress
+        run: chmod +x ./node_modules/.bin/cypress
         
       - name: Instalando as Dependências para os testes
         run: npm install
