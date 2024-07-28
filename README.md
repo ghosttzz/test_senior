@@ -1,11 +1,14 @@
 # Automação de Testes com Cypress
 Este projeto é referente a alguns cenários de possíveis automações e diferentes formas de faze-las. Foi construido com uma ideia utilizando a aplicação https://front.serverest.dev.
-Foram colocados vários comentários nos testes, eles irão auxiliar no entedimento do projeto
+Foram colocados vários comentários nos testes, eles irão auxiliar no entedimento do projeto.
+
+Os cenários de teste em que esses testes foram automatizados, estão no arquivo `analiseTestes.pdf`
 
 ### Tecnologias Utilizadas
 - Node.js (Versão 12 ou superior)
 - Cypress (Versão 12.14 ou superior)
 - TypeScript (Última versão)
+- JavaScript (Última versão)
 
 ## Estrutura do Projeto
     cypress/

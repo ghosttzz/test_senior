@@ -19,9 +19,14 @@
   "homepage": "https://github.com/ghosttzz/test_senior#readme",
   "devDependencies": {
     "cypress": "^13.13.1",
+    "cypress-multi-reporters": "^1.6.4",
     "cypress-plugin-api": "^2.11.2",
     "i": "^0.3.7",
+    "mocha-junit-reporter": "^2.2.1",
     "npm": "^10.8.2",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
