@@ -1,0 +1,8 @@
+{
+    "post": {
+        "nome": "Produto ENDPOINT AUTOMAÇÃO",
+        "preco": 23,
+        "descricao": "Teste Para Produto EndPoint Automação",
+        "quantidade": 2
+    }
+}

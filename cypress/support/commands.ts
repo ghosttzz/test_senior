@@ -6,12 +6,42 @@ declare global {
         interface Chainable {
             logandoUsuario(): Chainable<Window>;
             cadastrandoUsuario(admin?: boolean): Chainable<Window>;
-
+            setToken(campo?: string, valor?: string): Chainable<Window>;
+            getToken(campo?: string): Chainable<Window>;
+            setandoToken(): Chainable<Window>;
         }
     }
 }
+
+let token = {}
+
+Cypress.Commands.add('setToken', (campo, valor)=>{
+    token[campo] = valor
+})
+Cypress.Commands.add('getToken', (campo)=>{
+    return token[campo]
+})
+
+Cypress.Commands.add('setandoToken', ()=>{
+    let bodyEndPoint = {
+        "email": `${numUsuario}testUsuarioAutomatico@gmail.com`,
+        "password": "teste",
+    }
+    cy.request({
+        method: 'POST',
+        body: bodyEndPoint,
+        failOnStatusCode: false,
+        url: `${Cypress.env('apiUrl')}/login`
+    }).then(resp => {
+        expect(resp.status).eq(200);
+        expect(resp.body.message).eq('Login realizado com sucesso')
+        cy.setToken('token', resp.body.authorization.replace("Bearer ", ''))
+
+    })
+})
 let numUsuario = null
 //Estou criando uma função para cadastrar um usuario via endpoint para ganhar mais tempo e tornar o teste totalmente independente e também logando com o mesmo
+
 Cypress.Commands.add('cadastrandoUsuario', (admin) => {
      numUsuario = getNumerosAleatorios()
     //Aqui estou c
