@@ -1,45 +1,27 @@
-name: Execução automação de testes
+name: Pipeline de Tesets Auomatizados
 
 on:
-  # schedule:
-  #   - cron: '* 10 * * 1-5'
-  pull_request:
-    types: [synchronize,ready_for_review, review_requested, synchronize]
-    paths-ignore:
-      - '**.md'
   push:
     branches:
       - main
-  workflow_dispatch:
-    inputs:
-      teste:
-        description: 'Selecionar testes a serem executados: roteiro / test'
-        required: true
-        default: 'test'
-      browser:
-        description: 'Selecionar o browser: chrome / electron / firefox'
-        required: false
-        default: 'chrome'
-
-env:
-  DEFAULT_TESTE: "roteiro"
-  DEFAULT_BROWSER: "chrome"
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  test:
-    name: Cypress run
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Instalando Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
-          
-      - name: Install Cypress
-        run: npm install cypress
-
-      - name: Run Cypress tests
-        run: npx cypress run 
-
-  
+          node-version: '16'
+        
+      - name: Instalando as Dependências para os testes
+        run: npm install
+        
+      - name: Rodando os testes automatizados de API
+        run: npx cypress run
