@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Instalando o Cypress
-        run: npm install --dev cypress
+      - name: Liberando Permissao
+        run: chmod -R 755 cypress
         
       - name: Instalando as Dependências para os testes
         run: npm install
