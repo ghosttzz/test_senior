@@ -1,0 +1,27 @@
+{
+  "name": "test_senior",
+  "version": "1.0.0",
+  "description": "Este projeto é referente a alguns cenários de possíveis automações e diferentes formas de faze-las. Foi construido com uma ideia utilizando a aplicação https://front.serverest.dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghosttzz/test_senior.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghosttzz/test_senior/issues"
+  },
+  "homepage": "https://github.com/ghosttzz/test_senior#readme",
+  "devDependencies": {
+    "cypress": "^13.13.1",
+    "cypress-plugin-api": "^2.11.2",
+    "i": "^0.3.7",
+    "npm": "^10.8.2",
+    "typescript": "^5.5.4"
+  }
+}

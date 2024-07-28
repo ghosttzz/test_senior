@@ -1,0 +1,6 @@
+{
+    "msgNome": "Nome é obrigatório",
+    "msgPreco": "Preço é obrigatório",
+    "msgDescricao": "Descrição é obrigatório",
+    "msgQuantidade": "Quantidade é obrigatório"
+}
