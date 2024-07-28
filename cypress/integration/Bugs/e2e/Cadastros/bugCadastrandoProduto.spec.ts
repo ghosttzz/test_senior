@@ -13,7 +13,7 @@ describe('Rotina de Produtos', () => {
         })
         // Eu criei outro Caso de teste, porque, se juntar varios casos em apenas um IT, não saberemos qual quebrou em uma pipeline ou rodagem diaria, dividir em varios its, facilita descobrir onde o teste quebrou
         it('Validando as mensagens de erro', () => {
-            cy.fixture("e2e/Bugs/bugCadastrandoProdutoData.json").then((msgErros) => {
+            cy.fixture("Bugs/bugCadastrandoProdutoData.json").then((msgErros) => {
                 cy.url().should('include', '/admin/home');
 
                 cy.get(loc.telaProduto.buttonTelaCadastrandoProdutos).click()
