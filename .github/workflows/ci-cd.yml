@@ -30,4 +30,8 @@ jobs:
         run: npx cypress install
         
       - name: Rodando os testes automatizados de API
-        run: npx cypress run
+        run: npx cypress run --browser chrome --spec ./cypress/integration/API/
+      - name: Rodando os testes automatizados de Bugs
+        run: npx cypress run --browser chrome --spec ./cypress/integration/Bugs/
+      - name: Rodando os testes automatizados de E2E
+        run: npx cypress run --browser chrome --spec ./cypress/integration/e2e/
