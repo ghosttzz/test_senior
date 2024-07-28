@@ -5,12 +5,6 @@ Este projeto é referente a alguns cenários de possíveis automações e difere
 - Node.js (Versão 12 ou superior)
 - Cypress (Versão 12.14 ou superior)
 
-## Instalação 
-
-1. Instale o Node Js `https://nodejs.org/pt/download/prebuilt-installer`
-2. Clone o repositório em uma pasta de sua preferência `git clone https://github.com/ghosttzz/test_senior`
-3. Instale as dependências com `npm install`
-
 ## Estrutura do Projeto
     cypress/
     │  ├── fixtures/
@@ -42,3 +36,25 @@ Este projeto é referente a alguns cenários de possíveis automações e difere
 - tsconfig.json: Arquivo de configuração do TypeScript
 - cypress.json: Arquivo de configuração do Cypress e com todas as informações necessárias
 - package.json: Arquivo do próprio projeto
+
+## Instalação 
+
+1. Instale o Node Js `https://nodejs.org/pt/download/prebuilt-installer`
+2. Clone o repositório em uma pasta de sua preferência `git clone https://github.com/ghosttzz/test_senior`
+3. Instale as dependências com `npm install`
+
+## Como rodar
+Após a instalação, você tem tudo pronto, agora só falta rodar os testes.
+
+Existem 2 Opções mais básicas para rodar os testes
+
+`npx cypress open` - Essa opção abrirá a interface gráfica do Cypress, facilitando na hora de desenvolver, é mais demorado a rodagem mas facilita a manutenção
+
+`npx cypress run` - Essa opção roda diretamente na linha de comando os testes, sendo mais rapido e mais utilizado no CI/CD por exemplo
+
+Porém, existem momentos que você não deseja rodar tudo de uma vez, e sim apenas pasta por pasta, ou um teste em específico
+
+`npx cypress run --browser chrome --spec .\path\integration\API\produtos.spec.ts` - Nessa linha de comando estamos colocando como variavel da rodagem o browser, podendo ser chrome, electron, edge e firefox. 
+
+Para o caso de rodar uma pasta, seria:
+`npx cypress run --browser chrome .\cypress\integration\API\`

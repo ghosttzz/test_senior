@@ -1,7 +1,17 @@
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
-  env:{
+  video: false,
+  screenshotOnRunFailure: true,
+  downloadsFolder: 'downloads',
+  videosFolder: 'videos',
+ 
+  screenshotsFolder: 'screenshots',
+  pageLoadTimeout: 30000,
+  responseTimeout: 30000,
+  requestTimeout: 30000,
+  videoCompression: 0,
+  env: {
     apiUrl: 'https://serverest.dev'
   },
   e2e: {
@@ -11,6 +21,7 @@ export default defineConfig({
     baseUrl: 'https://front.serverest.dev',
     viewportWidth: 1280,
     viewportHeight: 720,
+
 
   },
 })

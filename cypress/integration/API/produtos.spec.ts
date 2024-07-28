@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /// <reference  types = "cypress" />
 import cd from '../../support/commands'
-describe('Ednpoints de Produtos ', () => {
+describe('Endpoints de Produtos ', () => {
     let numProdutoDiferencial = cd.getNumerosAleatorios()
     describe('Fazendo o processo de criação de Produto', () => {
 
@@ -16,7 +16,7 @@ describe('Ednpoints de Produtos ', () => {
         })
 
         it('Buscando os Produtos com o Metodo GET', function () {
-            cy.fixture("API/produto.json").then((body) => {
+            cy.fixture("API/produtoAPI.json").then((body) => {
                 body.post.nome = body.post.nome + numProdutoDiferencial
                 cy.request({
                     method: 'GET',
