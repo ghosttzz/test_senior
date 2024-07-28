@@ -1,42 +1,45 @@
-name: Pipeline de Tesets Auomatizados
+name: Execução automação de testes
 
 on:
+  # schedule:
+  #   - cron: '* 10 * * 1-5'
+  pull_request:
+    types: [synchronize,ready_for_review, review_requested, synchronize]
+    paths-ignore:
+      - '**.md'
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      teste:
+        description: 'Selecionar testes a serem executados: roteiro / test'
+        required: true
+        default: 'test'
+      browser:
+        description: 'Selecionar o browser: chrome / electron / firefox'
+        required: false
+        default: 'chrome'
+
+env:
+  DEFAULT_TESTE: "roteiro"
+  DEFAULT_BROWSER: "chrome"
 
 jobs:
-  cypress-run:
+  test:
+    name: Cypress run
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Instalando Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 18
+          
+      - name: Install Cypress
+        run: npm install cypress
 
-      - name: Liberando Permissao
-        run: chmod -R 755 cypress
-        
-      - name: Instalando as Dependências para os testes
-        run: npm install
-        
-      - name: Rodando os testes automatizados de API
-        run: npx cypress run --browser chrome --spec .\cypress\integration\API\
-        env:
-          CI: true
+      - name: Run Cypress tests
+        run: npx cypress run 
 
-      - name: Rodando os testes automatizados de e2e
-        run: npx cypress run --browser chrome --spec .\cypress\integration\e2e\
-        env:
-          CI: true
-
-      - name: Rodando os testes automatizados de Bugs
-        run: npx cypress run --browser chrome --spec .\cypress\integration\Bugs\
-        env:
-          CI: true
+  
