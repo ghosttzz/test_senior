@@ -51,7 +51,7 @@ Cypress.Commands.add('cadastrandoUsuario', (admin) => {
         "password": "teste",
         "administrador": `${admin}`
     }
-    cy.request({
+    cy.api({
         method: 'POST',
         body: bodyEndPoint,
         failOnStatusCode: false,
